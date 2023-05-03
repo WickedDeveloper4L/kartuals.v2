@@ -38,7 +38,7 @@ const Homepage = () => {
   return (
     <div className="homepage">
       <HomeCarousel />
-      <Featured slice={true} />
+      <Featured title="Featured Products" slice={true} />
 
       {bannerdata.map(({ id, ...other }) => (
         <Banner key={id} {...other} />
