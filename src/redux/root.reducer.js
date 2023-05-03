@@ -5,18 +5,19 @@ import { directoryReducer } from "./directory/directory.reducer";
 import { combineReducers } from "redux";
 import persistReducer from "redux-persist/es/persistReducer";
 import storage from "redux-persist/lib/storage";
-
-const persistConfig ={
-    key: 'root',
-    storage,
-    whitelist: ['cart']
-}
+import { wishlistReducer } from "./wishlist/wishlist.reducer";
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["cart", "wishlist"],
+};
 
 const rootReducer = combineReducers({
-    user: userReducer,
-    cart: cartReducer,
-    directory: directoryReducer,
-    shop: shopReducer
+  user: userReducer,
+  cart: cartReducer,
+  directory: directoryReducer,
+  shop: shopReducer,
+  wishlist: wishlistReducer,
 });
 
-export default persistReducer(persistConfig, rootReducer)
+export default persistReducer(persistConfig, rootReducer);

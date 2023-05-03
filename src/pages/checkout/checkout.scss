@@ -1,66 +1,70 @@
 .checkout-page {
-    width: 55%;
-    min-height: 90vh;
+  width: 55%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5rem auto 0;
+
+  @media screen and (max-width: 800px) {
+    width: 90%;
+    align-content: center;
+  }
+  .checkout_title {
+    color: #b87333;
+    text-align: center;
+    font-family: "Bruno Ace", cursive;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  .checkout-header {
+    width: 100%;
+    padding: 10px 0px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 50px auto 0;
+    justify-content: space-between;
+    border-bottom: 1px solid #b87333;
+    color: #fff;
 
-    @media screen and (max-width: 800px){
-      width: 90%;
-      align-content: center;
-    }
-  
-    .checkout-header {
-      width: 100%;
-      padding: 10px 0;
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid darkgrey;
-  
-      .header-block {
-        text-transform: capitalize;
-        width: 23%;
+    .header-block {
+      text-transform: capitalize;
+      width: 23%;
 
-        @media screen and (max-width: 800px){
-          font-size: 13px;
-        }
-  
-        &:last-child {
-          width: 8%;
-        }
-      }
-    }
-  
-    .total {
-      margin-top: 30px;
-      margin-left: auto;
-      font-size: 36px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-
-      @media screen and (max-width: 800px){
-        font-size: 17px;
-        text-align: center;
-        margin-left: 0;
-        
+      @media screen and (max-width: 800px) {
+        font-size: 13px;
       }
 
-      .test-warning{
-        width: 50vw;
-        margin: 0 auto;
-
-
-        .warning{
-          color: rgb(218, 7, 7);
-          font-size: 20px;
-          font-weight: 700;
-          text-align: center;
-        }
+      &:last-child {
+        width: 8%;
       }
     }
   }
-  
+
+  .total {
+    margin-top: 30px;
+    margin-left: auto;
+    font-size: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    @media screen and (max-width: 800px) {
+      font-size: 17px;
+      text-align: center;
+      margin-left: 0;
+    }
+
+    .test-warning {
+      width: 50vw;
+      margin: 0 auto;
+
+      .warning {
+        color: rgb(218, 7, 7);
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+      }
+    }
+  }
+}

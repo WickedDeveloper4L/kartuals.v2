@@ -1,60 +1,88 @@
-import React from 'react'
+import React from "react";
 import FormInput from "../form-input/FormInput";
 import CustomButton from "../custom-button/CustomButton";
-import { signUpStart } from '../../redux/user/user.actions';
-import { connect } from 'react-redux';
-import './signp.scss'
+import { signUpStart } from "../../redux/user/user.actions";
+import { connect } from "react-redux";
+import "./signp.scss";
 
+const SignUp = () => {
+  const [userCredentials, setUserCredentials] = React.useState({
+    displayName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-const SignUp =()=> {
-   const [userCredentials, setUserCredentials] = React.useState({
-      displayName: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-  })
+  const { displayName, email, password, confirmPassword } = userCredentials;
 
-  const {displayName, email, password, confirmPassword} = userCredentials;
-
-   const handleSubmit= async event=>{
-        event.preventDefault();
-        if(password !== confirmPassword){
-            alert("passwords don't match");
-            return;
-      }
-
-      signUpStart({displayName, email, password})
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (password !== confirmPassword) {
+      alert("passwords don't match");
+      return;
     }
-    
-    const handlChange = event =>{
-        const {name, value} = event.target;
 
-        setUserCredentials({
-          ...userCredentials,
-            [name]: value
-        })
-    };
+    signUpStart({ displayName, email, password });
+  };
 
-    return (
-      <div className='sign-up'>
-      <h2 className="title"> I do not have a account</h2>
-      <span>Sign up with ypur email and password</span>
-      <form onSubmit={handleSubmit} className="sign-up-form">
-        <FormInput type='text' name='displayName' value={displayName} onChange={handlChange} label='Display Name' required />
-        <FormInput type='email' name='email' value={email} onChange={handlChange} label='Email' required />
+  const handlChange = (event) => {
+    const { name, value } = event.target;
 
-        <FormInput type='password' name='password' value={password} onChange={handlChange} label='Password' required />
+    setUserCredentials({
+      ...userCredentials,
+      [name]: value,
+    });
+  };
 
-        <FormInput type='password' name='confirmPassword' value={confirmPassword} onChange={handlChange} label='Confirm Password' required />
+  return (
+    <div className="signup_con">
+      <div className="sign-up">
+        <h2 className="title"> I do not have an account</h2>
+        <span>Sign up with ypur email and password</span>
+        <form onSubmit={handleSubmit} className="sign-up-form">
+          <FormInput
+            type="text"
+            name="displayName"
+            value={displayName}
+            onChange={handlChange}
+            label="Display Name"
+            required
+          />
+          <FormInput
+            type="email"
+            name="email"
+            value={email}
+            onChange={handlChange}
+            label="Email"
+            required
+          />
 
-        <CustomButton  type='submit'>SIGN UP</CustomButton>
+          <FormInput
+            type="password"
+            name="password"
+            value={password}
+            onChange={handlChange}
+            label="Password"
+            required
+          />
+
+          <FormInput
+            type="password"
+            name="confirmPassword"
+            value={confirmPassword}
+            onChange={handlChange}
+            label="Confirm Password"
+            required
+          />
+
+          <CustomButton type="submit">SIGN UP</CustomButton>
         </form>
       </div>
-    )
+    </div>
+  );
+};
 
-}
-
-const mapDispatchToProps = dispatch=>({
-    signUpStart: userCredentials=>dispatch(signUpStart(userCredentials))
-})
+const mapDispatchToProps = (dispatch) => ({
+  signUpStart: (userCredentials) => dispatch(signUpStart(userCredentials)),
+});
 export default connect(null, mapDispatchToProps)(SignUp);

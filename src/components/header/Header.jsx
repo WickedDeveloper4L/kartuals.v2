@@ -8,6 +8,7 @@ import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { signOutStart } from "../../redux/user/user.actions";
 import TemporaryDrawer from "../utilities/Drawer";
+import CartDrawer from "../utilities/CartDrawer";
 
 const Header = () => {
   const currentUser = useSelector(selectCurrentUser);
@@ -17,14 +18,11 @@ const Header = () => {
   return (
     <div className="header">
       <Link to="/" className="logo-container">
-        <span>KARTUALS</span>
+        <span className="webtitle">KARTUALS</span>
       </Link>
-      <div className="options">
+      <div className="options_con">
         <Link to="/shop" className="option">
           <h3 className="link">SHOP</h3>
-        </Link>
-        <Link to="/shop" className="option">
-          <h3 className="link">CONTACT</h3>
         </Link>
         {currentUser ? (
           <div className="option" onClick={() => dispatch(signOutStart())}>
@@ -35,7 +33,7 @@ const Header = () => {
             SIGN IN
           </Link>
         )}
-        <CartIcon />
+        <CartDrawer anchor />
         <div className="mobile_drawer">
           <TemporaryDrawer anchor />
         </div>
