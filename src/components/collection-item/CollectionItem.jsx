@@ -7,6 +7,14 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { BsFillBagPlusFill } from "react-icons/bs";
 import { Rating } from "@mui/material";
 import { IoMdRemoveCircle } from "react-icons/io";
+import { motion } from "framer-motion";
+const child = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
 const CollectionItem = ({
   item,
   addItem,
@@ -16,7 +24,7 @@ const CollectionItem = ({
 }) => {
   const { imageUrl, name, price } = item;
   return (
-    <div className="collection-item">
+    <motion.div className="collection-item" variants={child}>
       <div className="image_con">
         <img alt="item" className="image" src={imageUrl} />
         <div className="controls">
@@ -56,7 +64,7 @@ const CollectionItem = ({
           <Rating name="read-only" value={10} readOnly fontSize="inherit" />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

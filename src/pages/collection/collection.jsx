@@ -5,7 +5,19 @@ import CollectionItem from "../../components/collection-item/CollectionItem";
 import "./collection.scss";
 import { useParams } from "react-router-dom";
 import Featured from "../../components/featured/Featured";
+import { motion } from "framer-motion";
 
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.8,
+      staggerChildren: 0.5,
+    },
+  },
+};
 const CollectionPage = () => {
   const { collectionId } = useParams();
 
@@ -15,11 +27,16 @@ const CollectionPage = () => {
   return (
     <div className="collection-page">
       <h2 className="title">{title}</h2>
-      <div className="items">
+      <motion.div
+        className="items"
+        variants={container}
+        initial="hidden"
+        animate="visible"
+      >
         {items.map((item) => (
           <CollectionItem key={item.id} item={item} />
         ))}
-      </div>
+      </motion.div>
       <Featured title="Trending fashion" slice={true} />
     </div>
   );
