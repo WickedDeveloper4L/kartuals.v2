@@ -8,7 +8,12 @@ const Wishlist = () => {
   const wishlist = useSelector(selectWishlistItems);
   return (
     <div className="wishlist_page">
-      <h2 className="title">My wishlist</h2>
+      {wishlist.length ? (
+        <h2 className="title">My wishlist</h2>
+      ) : (
+        <h2 className="title">Make a wish - add products to wishlist.</h2>
+      )}
+
       <div className="items">
         {wishlist.map((item) => (
           <CollectionItem wishlist={true} key={item.id} item={item} />

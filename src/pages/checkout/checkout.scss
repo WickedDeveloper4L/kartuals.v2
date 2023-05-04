@@ -9,6 +9,7 @@
   @media screen and (max-width: 800px) {
     width: 90%;
     align-content: center;
+    margin-bottom: 2rem;
   }
   .checkout_title {
     color: #b87333;
@@ -48,6 +49,7 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    color: #b87333;
 
     @media screen and (max-width: 800px) {
       font-size: 17px;

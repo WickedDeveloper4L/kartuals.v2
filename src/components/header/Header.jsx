@@ -2,7 +2,6 @@ import React from "react";
 import "./header.scss";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux/es/exports";
-import CartIcon from "../cart-icon/CartIcon";
 import CartDropdown from "../cart-dropdown/CartDropdown";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selectors";

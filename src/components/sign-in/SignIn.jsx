@@ -10,6 +10,9 @@ import {
 } from "../../redux/user/user.actions";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectisLoading } from "../../redux/user/user.selectors";
+import { PropagateLoader } from "react-spinners";
 
 const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   const [details, setDetails] = React.useState({
@@ -33,6 +36,8 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
       [name]: value,
     });
   };
+
+  const isLoading = useSelector(selectisLoading);
 
   return (
     <div className="signin_con">
@@ -70,6 +75,8 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
             </CustomButton>
           </div>
         </form>
+        {isLoading && <PropagateLoader color="#b87333" className="loader" />}
+
         <Link className="create" to="/signup">
           create an account
         </Link>

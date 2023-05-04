@@ -58,15 +58,24 @@ export default function CartDrawer({ anchor }) {
     <Box
       sx={{
         color: "black",
-        background: "#b87333",
+        background: "#fff",
         width: anchor === "top" || anchor === "bottom" ? "auto" : 250,
-        height: "120%",
+        height: "fit-content",
+        minHeight: "100%",
       }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <ListItem key="15">
+      <ListItem
+        key="15"
+        style={{
+          fontSize: "20px",
+          fontWeight: "bolder",
+          fontFamily: "Bruno Ace",
+          backgroundColor: "#eee",
+        }}
+      >
         <ListItemText
           primary={
             <span
@@ -74,16 +83,12 @@ export default function CartDrawer({ anchor }) {
                 fontSize: "20px",
                 fontWeight: "bolder",
                 fontFamily: "Bruno Ace",
+                color: "#b87333",
               }}
             >
               My cart <BsFillBagFill style={{ fontSize: "20px" }} />
             </span>
           }
-          sx={{
-            fontWeight: "medium",
-            fontSize: 20,
-            color: "black",
-          }}
         />
       </ListItem>
       <Divider />

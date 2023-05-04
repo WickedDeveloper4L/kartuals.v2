@@ -23,6 +23,7 @@ const CollectionItem = ({
   removeItemWishlist,
 }) => {
   const { imageUrl, name, price } = item;
+  var randNum = Math.floor(Math.random() * 10) + 1;
   return (
     <motion.div className="collection-item" variants={child}>
       <div className="image_con">
@@ -61,7 +62,12 @@ const CollectionItem = ({
             <span className="price slash">{`${"$"}${price}`}</span>
             <span className="price">→ {`${"$"}${price - 10}`}</span>
           </div>
-          <Rating name="read-only" value={10} readOnly fontSize="inherit" />
+          <Rating
+            name="read-only"
+            value={randNum}
+            readOnly
+            fontSize="inherit"
+          />
         </div>
       </div>
     </motion.div>

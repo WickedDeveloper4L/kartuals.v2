@@ -14,6 +14,7 @@ import {
   FaShoppingBag,
   FaSignOutAlt,
   FaUserCircle,
+  FaHeart,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
@@ -121,6 +122,32 @@ export default function TemporaryDrawer({ anchor }) {
       )}
       <Divider />
       <List>
+        <ListItem key="17" disablePadding>
+          <Link to="/wishlist">
+            <ListItemButton>
+              <ListItemIcon
+                sx={{
+                  color: "black",
+                }}
+              >
+                <FaHeart style={{ color: "black" }} />
+              </ListItemIcon>
+              <ListItemText
+                primary={
+                  <span
+                    style={{
+                      fontSize: "13px",
+                      fontFamily: "Bruno Ace",
+                    }}
+                  >
+                    My wishlist
+                  </span>
+                }
+              />
+            </ListItemButton>
+          </Link>
+        </ListItem>
+        <Divider />
         <ListItem key="5" disablePadding>
           <Link to="/shop">
             <ListItemButton>
