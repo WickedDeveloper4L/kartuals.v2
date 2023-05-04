@@ -1,0 +1,40 @@
+.featured_con {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+  padding: 0px 20px;
+  width: 100vw;
+  background-color: black;
+
+  .featured_title {
+    font-size: 25px;
+    margin: 20px 0px;
+    font-family: "Bruno Ace", cursive;
+    color: #b87333;
+
+    @media screen and (max-width: 800px) {
+      font-size: 17px;
+      border-bottom: 2px solid #b87333;
+    }
+  }
+
+  .featured_items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 20px;
+    width: 100%;
+    column-gap: 10px;
+    align-content: center;
+
+    & .collection-item {
+      margin-bottom: 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+      align-items: center;
+    }
+  }
+}

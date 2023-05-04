@@ -1,0 +1,46 @@
+.banner {
+  background-color: #b87333;
+  width: 90%;
+  height: 280px;
+  border-radius: 5px;
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 20px;
+  overflow: hidden;
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 30% 70%;
+  }
+  .info_con {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+
+    .banner_title {
+      font-size: 2rem;
+      font-weight: 800;
+      font-family: "Bruno Ace", cursive;
+    }
+
+    .banner-link {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+
+  .banner_image_con {
+    justify-content: flex-end;
+    .banner_icon {
+      color: rgb(0, 0, 0);
+      transform: rotate(35deg);
+      font-size: 300px;
+
+      @media screen and (max-width: 800px) {
+        margin-top: -4rem;
+        font-size: 380px;
+        transform: rotate(20deg);
+      }
+    }
+  }
+}
