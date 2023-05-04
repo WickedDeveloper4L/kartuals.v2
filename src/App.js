@@ -12,6 +12,7 @@ import Wishlist from "./pages/wishlist/Wishlist";
 import SignIn from "./components/sign-in/SignIn";
 import SignUp from "./components/sign-up/SignUp";
 import { selectCollectionItems } from "./redux/shop/shop.selector";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   const currentUser = useSelector(selectCurrentUser);
@@ -37,6 +38,7 @@ const App = () => {
         />
         <Route exact path="/signup" component={SignUp} />
       </Switch>
+      <Footer />
     </div>
   );
 };

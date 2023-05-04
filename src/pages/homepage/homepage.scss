@@ -5,4 +5,14 @@
   padding-top: 5rem;
   background-color: black;
   min-height: 100vh;
+
+  .banners {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 2rem;
+  }
 }
