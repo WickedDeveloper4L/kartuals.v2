@@ -1,10 +1,16 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Route } from "react-router-dom";
 import { fetchCollectionsStart } from "../../redux/shop/shop.actions";
 import { connect } from "react-redux";
-import collectionsOverviewContainer from "../../components/coolection-overview/CollectionsOverviewContainer";
-import collectionContainer from "../collection/collectionContainer";
 import "./shop.scss";
+import { PropagateLoader } from "react-spinners";
+
+const collectionsOverviewContainer = lazy(() =>
+  import("../../components/coolection-overview/CollectionsOverviewContainer")
+);
+const collectionContainer = lazy(() =>
+  import("../collection/collectionContainer")
+);
 const Shop = ({ fetchCollectionsStart, match }) => {
   React.useEffect(() => {
     fetchCollectionsStart();
@@ -12,15 +18,31 @@ const Shop = ({ fetchCollectionsStart, match }) => {
 
   return (
     <div className="shop-page">
-      <Route
-        exact
-        path={`${match.path}`}
-        component={collectionsOverviewContainer}
-      />
-      <Route
-        path={`${match.path}/:collectionId`}
-        component={collectionContainer}
-      />
+      <Suspense
+        fallback={
+          <div
+            style={{
+              height: "100vh",
+              width: "100vw",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <PropagateLoader color="#b87333" className="loader" />
+          </div>
+        }
+      >
+        <Route
+          exact
+          path={`${match.path}`}
+          component={collectionsOverviewContainer}
+        />
+        <Route
+          path={`${match.path}/:collectionId`}
+          component={collectionContainer}
+        />
+      </Suspense>
     </div>
   );
 };

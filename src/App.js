@@ -1,18 +1,20 @@
 import "./App.scss";
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Homepage from "./pages/homepage/Homepage";
-import Shop from "./pages/shop/Shop";
 import Header from "./components/header/Header";
-import Checkout from "./pages/checkout/Checkout";
 import { checkUserSession } from "./redux/user/user.actions";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCurrentUser } from "./redux/user/user.selectors";
-import Wishlist from "./pages/wishlist/Wishlist";
-import SignIn from "./components/sign-in/SignIn";
-import SignUp from "./components/sign-up/SignUp";
 import { selectCollectionItems } from "./redux/shop/shop.selector";
 import Footer from "./components/footer/Footer";
+import { PropagateLoader } from "react-spinners";
+
+const Homepage = lazy(() => import("./pages/homepage/Homepage"));
+const Checkout = lazy(() => import("./pages/checkout/Checkout"));
+const Wishlist = lazy(() => import("./pages/wishlist/Wishlist"));
+const SignIn = lazy(() => import("./components/sign-in/SignIn"));
+const SignUp = lazy(() => import("./components/sign-up/SignUp"));
+const Shop = lazy(() => import("./pages/shop/Shop"));
 
 const App = () => {
   const currentUser = useSelector(selectCurrentUser);
@@ -27,16 +29,32 @@ const App = () => {
     <div className="app">
       <Header />
       <Switch>
-        <Route exact path="/" component={Homepage} />
-        <Route path="/shop" component={Shop} />
-        <Route exact path="/checkout" component={Checkout} />
-        <Route exact path="/wishlist" component={Wishlist} />
-        <Route
-          exact
-          path="/signIn"
-          render={() => (currentUser ? <Redirect to="/" /> : <SignIn />)}
-        />
-        <Route exact path="/signup" component={SignUp} />
+        <Suspense
+          fallback={
+            <div
+              style={{
+                height: "100vh",
+                width: "100vw",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <PropagateLoader color="#b87333" className="loader" />
+            </div>
+          }
+        >
+          <Route exact path="/" component={Homepage} />
+          <Route path="/shop" component={Shop} />
+          <Route exact path="/checkout" component={Checkout} />
+          <Route exact path="/wishlist" component={Wishlist} />
+          <Route
+            exact
+            path="/signIn"
+            render={() => (currentUser ? <Redirect to="/" /> : <SignIn />)}
+          />
+          <Route exact path="/signup" component={SignUp} />
+        </Suspense>
       </Switch>
       <Footer />
     </div>
